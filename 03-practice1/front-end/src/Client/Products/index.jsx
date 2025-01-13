@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from 'react'
-
+import React, { useContext, useEffect, useState } from 'react'
+import { BsCartFill } from "react-icons/bs";
+import { BasketContext } from '../../context/BasketProvider';
 import axios from 'axios'
 const Products = () => {
   const BASE_URL = "http://localhost:8080/practice1"
   const [products, setProducts] = useState([])
+  const { addToBasket} = useContext(BasketContext)
 
   const getAllData = async () => {
     try {
@@ -40,6 +42,10 @@ const Products = () => {
                   <p className="card-text">
                    {p.description}
                   </p>
+                  <div className="btns">
+                    <button onClick={() => { addToBasket(p) }} className='btn btn-outline-success'><BsCartFill />
+                    </button>
+                  </div>
                   
                 </div>
               </div>
