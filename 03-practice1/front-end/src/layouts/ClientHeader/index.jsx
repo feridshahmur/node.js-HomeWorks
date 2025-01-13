@@ -37,6 +37,15 @@ const ClientHeader = () => {
             </li>
             <li className="nav-item">
               <NavLink 
+                to={"/addproducts"} 
+                className="nav-link text-white"
+                style={{ fontWeight: 'bold' }}
+              >
+               Add   Products
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink 
                 to={"/basket"} 
                 className="nav-link text-white"
                 style={{ fontWeight: 'bold' }}

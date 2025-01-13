@@ -8,7 +8,7 @@ const MainClient = () => {
     <>
         <ClientHeader/>
         <Outlet/>
-        <ClientFooter/>
+      
     </>
   )
 }
