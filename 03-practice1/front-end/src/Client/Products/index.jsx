@@ -5,6 +5,7 @@ import axios from 'axios'
 const Products = () => {
   const BASE_URL = "http://localhost:8080/practice1"
   const [products, setProducts] = useState([])
+  const [searchQuery , setSearchQuery] = useState("")
   const { addToBasket} = useContext(BasketContext)
 
   const getAllData = async () => {
@@ -19,6 +20,7 @@ const Products = () => {
 
     }
   }
+  const filteredProducts = products.filter((q)=>q.title.toLowerCase().includes(searchQuery.toLocaleLowerCase().trim()) )
 
   useEffect(() => {
     getAllData()
@@ -27,11 +29,15 @@ const Products = () => {
 
   return (
     <section id='products' style={{margin:"30px 0"}}>
+      
       <div className="container">
+      <div>
+        <input type="search" placeholder='Search...' style={{padding:"1rem 5rem" , margin:"1rem"}} onChange={(e)=>{setSearchQuery(e.target.value)}}/>
+      </div>
         <div className="cards">
           <div className="row">
           {
-            products && products.map((p) => {
+            filteredProducts && filteredProducts.map((p) => {
              return(
               <div key={p._id} className="col-12 col-md-6 col-lg-4">
                <div className="card" style={{ width: "18rem" }}>

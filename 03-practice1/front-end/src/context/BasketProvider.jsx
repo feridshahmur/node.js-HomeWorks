@@ -7,13 +7,13 @@ const BasketProvider = ({children}) => {
 
 
   const addToBasket = (product)=>{
-      const found = basket.find((b)=>b.id === product._id)
+      const found = basket.find((b)=>b._id === product._id)
       if (!found) {
         setBasket([...basket , {...product ,quantity : 1 }])
       }
       else{
-        found.quantity++
         setBasket([...basket])
+        found.quantity++
       }
   }
   return (
